@@ -1,7 +1,10 @@
 {
     "name": "raymondidema/commandee",
     "description": "Command/Event Dispatcher",
+<<<<<<< HEAD
     "license": "MIT",
+=======
+>>>>>>> aa521d34bb7a69bb2f9fe8c6a3210e2fa9375391
     "authors": [
         {
             "name": "Raymond Idema",
@@ -18,4 +21,8 @@
         }
     },
     "minimum-stability": "stable"
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> aa521d34bb7a69bb2f9fe8c6a3210e2fa9375391
