@@ -1,4 +1,0 @@
-commandee
-=========
-
-Command/Event Dispatcher
