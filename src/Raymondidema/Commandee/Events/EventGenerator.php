@@ -1,6 +1,6 @@
-<?php namespace Raymondidema\Commandee\Eventing;
+<?php namespace Raymondidema\Commandee\Events;
 
-trait EventFactory {
+trait EventGenerator {
 
     /**
      * @var array
@@ -18,7 +18,7 @@ trait EventFactory {
     /**
      * @return array
      */
-    public function releaseEvents()
+    public  function releaseEvents()
     {
         $events = $this->pendingEvents;
 
@@ -26,4 +26,4 @@ trait EventFactory {
 
         return $events;
     }
-} 
+}

@@ -1,6 +1,7 @@
 {
     "name": "raymondidema/commandee",
     "description": "Command/Event Dispatcher",
+    "license": "MIT",
     "authors": [
         {
             "name": "Raymond Idema",
@@ -17,4 +18,3 @@
         }
     },
     "minimum-stability": "stable"
-}

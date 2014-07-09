@@ -1,5 +1,4 @@
-<?php namespace Raymondidema\Commandee\Eventing;
-
+<?php namespace Raymondidema\Commandee\Events;
 use ReflectionClass;
 
 class EventListener {
@@ -22,12 +21,11 @@ class EventListener {
     /**
      * @param $event
      *
-     * @return string
+     * @return ReflectionClass
      */
     protected function getEventName($event)
     {
-        $eventName = (new ReflectionClass($event))->getShortName();
-        return $eventName;
+        $eventName = (new ReflectionClass($event))->getShortName();return $eventName;
     }
 
     /**
@@ -40,7 +38,6 @@ class EventListener {
     protected function listenerIsRegistered($eventName)
     {
         $method = "when{$eventName}";
-
         return method_exists($this, $method);
     }
 } 

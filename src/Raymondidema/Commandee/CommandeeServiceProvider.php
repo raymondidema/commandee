@@ -4,19 +4,20 @@ use Illuminate\Support\ServiceProvider;
 
 class CommandeeServiceProvider extends ServiceProvider {
 
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
     public function register()
     {
-        $listeners = $this->app['config']->get('commandee.listeners');
-        $listenName = $this->app['config']->get('commandee.listenName');
-        foreach($listeners as $listener)
-        {
-            $this->app['events']->listen($listenName, $listener);
-        }
+        $this->registerCommandBus();
+    }
+
+    protected function registerCommandBus()
+    {
+        $this->app->bindShared('Raymondidema\Commandee\CommandBus', function () {
+            return $this->app->make('Raymondidema\Commandee\ValidationCommandBus');
+        });
+    }
+
+    public function providers()
+    {
+        return ['commandee'];
     }
 }
