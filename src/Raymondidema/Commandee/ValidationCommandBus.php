@@ -2,33 +2,33 @@
 
 use Illuminate\Foundation\Application;
 
-class ValidationCommandBus implements CommandBus {
+class ValidationCommandBus extends BaseCommandBus {
 
-    protected $app;
-
-    protected $commandTranslator;
-
-    protected $commandBus;
-
-    function __construct(BaseCommandBus $commandBus, Application $app, CommandTranslator $commandTranslator)
+    /**
+     * @param $command
+     *
+     * @return mixed
+     */
+    public function execute($command)
     {
-        $this->commandTranslator = $commandTranslator;
-        $this->app = $app;
-        $this->commandBus = $commandBus;
+        $this->validateCommand($command);
+
+        return parent::execute($command);
     }
 
 
-    public function execute($command)
+    /**
+     * @param $command
+     *
+     * @return mixed
+     */
+    protected function validateCommand($command)
     {
-
         $validator = $this->commandTranslator->toValidator($command);
 
-        if(class_exists($validator))
+        if (class_exists($validator))
         {
             $this->app->make($validator)->validate($command);
         }
-
-        return $this->commandBus->execute($command);
-
     }
 } 
