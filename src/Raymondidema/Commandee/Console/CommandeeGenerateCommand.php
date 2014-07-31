@@ -1,6 +1,8 @@
 <?php namespace Raymondidema\Commandee\Console;
 
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class CommandeeGenerateCommand extends Command {
 
