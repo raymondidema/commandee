@@ -49,7 +49,7 @@ class CommandeeServiceProvider extends ServiceProvider {
     {
         $this->app->bindShared('commander.command.make', function($app)
         {
-            return $app->make('Raymondidema\Commandee\Console\CommanderGenerateCommand');
+            return $app->make('Raymondidema\Commandee\Console\CommandeeGenerateCommand');
         });
 
         $this->commands('commandee.command.make');
