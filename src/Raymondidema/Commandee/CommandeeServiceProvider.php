@@ -16,6 +16,7 @@ class CommandeeServiceProvider extends ServiceProvider {
     {
         $this->registerCommandTranslator();
         $this->registerCommandBus();
+        $this->registerArtisanCommand();
     }
 
     /**
@@ -37,6 +38,21 @@ class CommandeeServiceProvider extends ServiceProvider {
             'Raymondidema\Commandee\CommandTranslator',
             'Raymondidema\Commandee\BaseCommandTranslator'
         );
+    }
+
+    /**
+     * Register the Artisan command
+     *
+     * @return void
+     */
+    public function registerArtisanCommand()
+    {
+        $this->app->bindShared('commander.command.make', function($app)
+        {
+            return $app->make('Raymondidema\Commandee\Console\CommanderGenerateCommand');
+        });
+
+        $this->commands('commandee.command.make');
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php namespace Raymondidema\Commandee;
 
-class BaseCommandTranslator {
+class BaseCommandTranslator implements CommandTranslator {
 
     /**
      * @param $command
