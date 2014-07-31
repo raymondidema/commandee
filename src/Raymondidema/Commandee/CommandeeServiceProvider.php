@@ -47,7 +47,7 @@ class CommandeeServiceProvider extends ServiceProvider {
      */
     public function registerArtisanCommand()
     {
-        $this->app->bindShared('commander.command.make', function($app)
+        $this->app->bindShared('commandee.command.make', function($app)
         {
             return $app->make('Raymondidema\Commandee\Console\CommandeeGenerateCommand');
         });
