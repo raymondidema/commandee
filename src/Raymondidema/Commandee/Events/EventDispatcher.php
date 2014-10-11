@@ -15,22 +15,29 @@ class EventDispatcher {
     }
 
 
-    public function dispatch(array $events)
+    public function dispatch(array $events, $legacy = true)
     {
         foreach($events as $event)
         {
-            $eventName = $this->getEventName($event);
+            $eventName = $this->getEventName($event, $legacy);
             $this->event->fire($eventName, $event);
             $this->log->info("$eventName was fired.");
         }
     }
 
     /**
+     * Get Event Name, use Legacy if we want to use it in Laravel 4
+     * else we can use it in Laravel 5
+     *
      * @param $event
      * @return mixed
      */
-    protected function getEventName($event)
+    protected function getEventName($event, $legacy)
     {
-        return str_replace('\\', '.', get_class($event));
+        if($legacy)
+            return str_replace('\\', '.', get_class($event));
+        $data = explode('\\', get_class($event));
+        return end($data);
+
     }
 }
